@@ -20,7 +20,7 @@ function App() {
 
   const fetchVoices = async () => {
     try {
-      const response = await axios.get('http://192.168.1.10:3000/api/get-voices');
+      const response = await axios.get('https://meditation-app-backend-6o1d.onrender.com/api/get-voices');
       console.log('Backend Response:', response.data);
       
       // Backend se voices array extract karna
@@ -66,7 +66,7 @@ function App() {
         formData.append('voice_sample', file);
         formData.append('name', file.name);
 
-        axios.post('http://192.168.1.10:3000/api/clone', formData, {
+        axios.post('https://meditation-app-backend-6o1d.onrender.com/api/clone', formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
           },
@@ -114,7 +114,7 @@ function App() {
     const voiceId = selectedVoice || recordings[0]?.id || 'default-voice';
     
     try {
-      const response = await fetch('http://192.168.1.10:3000/api/speak', {
+      const response = await fetch('https://meditation-app-backend-6o1d.onrender.com/api/speak', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ text: textInput, voiceId: voiceId })
